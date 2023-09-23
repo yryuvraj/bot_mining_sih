@@ -1,1 +1,38 @@
 My dog's name is Sunny.
+
+*Frequently Asked Questions (FAQs) - Mining Industry and Laws*
+
+*1. What are the key Acts and Rules governing the Mining Industry in India?*
+   - The Coal Mines Act, 1952
+   - Indian Explosives Act, 1884
+   - Colliery Control Order, 2000
+   - Colliery Control Rules, 2004
+   - The Coal Mines Regulations, 2017
+   - The Payment of Wages (Mines) Rules, 1956
+
+*2. What is the purpose of the Coal Mines Act, 1952?*
+   - The Coal Mines Act, 1952, regulates the working conditions, safety, and welfare of laborers in coal mines.
+
+*3. How does the Indian Explosives Act, 1884, relate to mining?*
+   - This act governs the handling, storage, and use of explosives, which are often used in mining operations.
+
+*4. What do the Colliery Control Order and Rules pertain to?*
+   - They cover various aspects of colliery management, safety, and operational procedures in coal mines.
+
+*5. What is the significance of The Coal Mines Regulations, 2017?*
+   - These regulations set detailed standards for safety, health, and environmental protection in coal mining.
+
+*6. How are wages regulated in mining?*
+   - The Payment of Wages (Mines) Rules, 1956, specify the rules for the payment of wages to mine workers.
+
+*7. Are there any land-related laws that apply to mining?*
+   - Yes, land-related laws like CRA (Coal Bearing Areas Act), LA (Land Acquisition Act), and RandR (Rehabilitation and Resettlement) laws can also be relevant to mining projects.
+
+*8. Where can I find more information about these laws and regulations?*
+   - You can consult official government websites, legal authorities, or contact the Ministry of Coal for detailed information.
+
+*9. How can I stay updated on changes in mining laws?*
+   - It's advisable to regularly check official government websites and subscribe to relevant industry publications for updates.
+
+*10. Is there a 24/7 chatbot available for mining industry queries?*
+    - Yes, the Ministry of Coal has developed a chatbot using AI and NLP technology to answer queries related to mining laws, acts, and regulations.
