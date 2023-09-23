@@ -9,7 +9,6 @@ from langchain.indexes import VectorstoreIndexCreator
 from langchain.indexes.vectorstore import VectorStoreIndexWrapper
 from langchain.llms import OpenAI
 from langchain.vectorstores import Chroma
-
 import constants
 
 os.environ["OPENAI_API_KEY"] = "api_here"
@@ -18,34 +17,45 @@ os.environ["OPENAI_API_KEY"] = "api_here"
 PERSIST = False
 
 query = None
-if len(sys.argv) > 1:
-  query = sys.argv[1]
 
-if PERSIST and os.path.exists("persist"):
-  print("Reusing index...\n")
-  vectorstore = Chroma(persist_directory="persist", embedding_function=OpenAIEmbeddings())
-  index = VectorStoreIndexWrapper(vectorstore=vectorstore)
-else:
-  loader = TextLoader("data/data.txt") # Use this line if you only need data.txt
-  # loader = DirectoryLoader("data/")
-  if PERSIST:
-    index = VectorstoreIndexCreator(vectorstore_kwargs={"persist_directory":"persist"}).from_loaders([loader])
-  else:
-    index = VectorstoreIndexCreator().from_loaders([loader])
+def initialize_module():
+    global query
+    if len(sys.argv) > 1:
+        query = sys.argv[1]
 
-chain = ConversationalRetrievalChain.from_llm(
-  llm=ChatOpenAI(model="gpt-3.5-turbo"),
-  retriever=index.vectorstore.as_retriever(search_kwargs={"k": 1}),
-)
+    if PERSIST and os.path.exists("persist"):
+        print("Reusing index...\n")
+        vectorstore = Chroma(persist_directory="persist", embedding_function=OpenAIEmbeddings())
+        index = VectorStoreIndexWrapper(vectorstore=vectorstore)
+    else:
+        loader = TextLoader("data/data.txt")  # Use this line if you only need data.txt
+        # loader = DirectoryLoader("data/")
+        if PERSIST:
+            index = VectorstoreIndexCreator(vectorstore_kwargs={"persist_directory": "persist"}).from_loaders([loader])
+        else:
+            index = VectorstoreIndexCreator().from_loaders([loader])
 
-chat_history = []
-while True:
-  if not query:
-    query = input("Prompt: ")
-  if query in ['quit', 'q', 'exit']:
-    sys.exit()
-  result = chain({"question": query, "chat_history": chat_history})
-  print(result['answer'])
+    chain = ConversationalRetrievalChain.from_llm(
+        llm=ChatOpenAI(model="gpt-3.5-turbo"),
+        retriever=index.vectorstore.as_retriever(search_kwargs={"k": 1}),
+    )
 
-  chat_history.append((query, result['answer']))
-  query = None
+    chat_history = []
+
+def run_module():
+    global query
+    chat_history = []
+    while True:
+        if not query:
+            query = input("Prompt: ")
+        if query in ['quit', 'q', 'exit']:
+            sys.exit()
+        result = chain({"question": query, "chat_history": chat_history})
+        print(result['answer'])
+
+        chat_history.append((query, result['answer']))
+        query = None
+
+if __name__ == "__main__":
+    initialize_module()
+    run_module()
